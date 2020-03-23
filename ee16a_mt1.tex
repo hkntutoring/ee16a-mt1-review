@@ -7,7 +7,16 @@
 \usepackage[siunitx, american]{circuitikz}
 \usepackage{hyperref}
 \usepackage{cancel}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \usetikzlibrary{automata, arrows}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
 
 \title{EECS 16A Midterm 1 Review Session}
 \author{Presented by \textless NAMES \textgreater (HKN)}
@@ -52,6 +61,41 @@ A point in 3D can be represented as $(x,y,z)$
 In vector form, this would be represented as $\begin{bmatrix} x \\ y \\ z \\ \end{bmatrix}$
 
 \end{frame}
+
+
+\begin{frame}[t]\vspace{5pt}
+\frametitle{Matrices}
+\begin{itemize}
+\item Collection of \textbf{vectors}
+\item 2D table for \textbf{storing data}
+	\begin{itemize}
+		\item[$\circledcirc$] Systems of equations for imaging observations
+	\end{itemize}
+\item Notable/useful matrices
+	\begin{itemize}
+		\item[$\circledcirc$] Identity matrix
+		\item[$\circledcirc$] Augmented matrices
+		\item[$\circledcirc$] Rotation matrix
+		\item[$\circledcirc$] Many others!
+	\end{itemize}
+\end{itemize}
+
+Augmented:
+$\begin{bmatrix}[ccc|c]
+1 & -2 & 3 & 7\\
+2 & 1 & 1 & 4\\
+-3 & 2 & 3-2& 10\\
+\end{bmatrix}$
+
+Rotation: \hspace{9pt}
+$\begin{bmatrix}
+\cos{\theta} & -\sin{\theta} \\
+\sin{\theta} & \cos{\theta} \\
+
+\end{bmatrix}$
+
+\end{frame}
+
 
 
 \end{document}
