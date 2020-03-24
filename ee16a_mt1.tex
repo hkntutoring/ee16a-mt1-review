@@ -103,7 +103,7 @@ $\begin{bmatrix}
 \frametitle{Matrix Transformations}
 
 Matrices are often used to perform transformations, especially 
-\newline in $\mathbb{R}^2$ \newline\newline
+\newline in $\mathbb{R}^2$ \\~\\
 Two important transformations:
 
 \begin{figure}[!tbp]
@@ -116,6 +116,94 @@ Two important transformations:
   \begin{minipage}[b]{0.3\textwidth}
     \includegraphics[width=\textwidth]{./images/reflection.png}
     \caption{Reflection}
+  \end{minipage}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Rotation Matrix}
+The rotation matrix rotates points by a specified angle, theta: \\~\\
+$R(\theta) = \begin{bmatrix}
+\cos{\theta} & -\sin{\theta} \\
+\sin{\theta} & \cos{\theta} \\
+\end{bmatrix}$
+
+Use this matrix by plugging in desired rotation angle, then multiply with vector. \\
+\textbf{Note: } Rotation matrices also preserve the length of a vector. \\~\\
+\textbf{Example}: Rotation Matrix that rotates vector by $90^{\circ}$ \\~\\
+$R(90^{\circ}) = \begin{bmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{bmatrix}$
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Rotation Matrix}
+The rotation matrix rotates points by a specified angle, theta: \\~\\
+$R(\theta) = \begin{bmatrix}
+\cos{\theta} & -\sin{\theta} \\
+\sin{\theta} & \cos{\theta} \\
+\end{bmatrix}$
+
+Use this matrix by plugging in desired rotation angle, then multiply with vector. \\
+\textbf{Note: } Rotation matrices also preserve the length of a vector. \\~\\
+\textbf{Example}: Rotation Matrix that rotates vector by $90^{\circ}$ \\~\\
+$R(90^{\circ}) = \begin{bmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{bmatrix}$
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Reflection Matrix}
+
+The reflection matrix reflects vectors across a line (Notice that such matrix also preserves the length of a vector)\\~\\
+Notable reflection matrices:
+
+\begin{figure}
+  \begin{minipage}{.5\linewidth}
+    \centering
+    \[\left[\begin{array}{cc}
+      1 &  0\\
+      0 & -1
+    \end{array}\right]\]
+    Reflection across $x$-axis
+  \end{minipage}%
+  \begin{minipage}{.5\linewidth}
+    \centering
+    \[\left[\begin{array}{cc}
+      -1 &  0\\
+      0 & 1
+    \end{array}\right]\]
+    Reflection across $y$-axis
+  \end{minipage}
+  \begin{minipage}{.5\linewidth}
+    \centering
+    \[\left[\begin{array}{cc}
+      0 & 1\\
+      1 & 0
+    \end{array}\right]\]
+    Reflection across $y=x$
+  \end{minipage}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Matrix Transformations}
+All linear transformations can be expressed as a matrix
+
+\begin{figure}[!tbp]
+  \centering
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/sheep.png}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{./images/sheep_shear.png}
   \end{minipage}
 \end{figure}
 \end{frame}
