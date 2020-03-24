@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usetikzlibrary{automata, arrows}
 
+% https://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
   \hskip -\arraycolsep
@@ -19,9 +20,17 @@
   \array{#1}}
 \makeatother
 
+
+% https://tex.stackexchange.com/questions/102069/make-a-heading-in-beamer
+\newcommand\makeheader[1]{%
+  \par\bigskip
+  {\large\bfseries#1}\par\smallskip}
+
 \title{EECS 16A Midterm 1 Review Session}
 \author{Presented by \textless NAMES \textgreater (HKN)}
 \date{}
+
+
 
 
 \begin{document}
@@ -207,6 +216,75 @@ All linear transformations can be expressed as a matrix
   \end{minipage}
 \end{figure}
 \end{frame}
+
+
+\begin{frame}[t]\vspace{-10pt}
+\frametitle{Example 1}
+\only<1>{\makeheader{Question}}
+\only<2>{\makeheader{\textcolor{red}{Solution}}}
+
+What is the resulting vector after the following (non-subsequent) transformations are applied 
+to the vector 
+$\vec{v}= \begin{bmatrix}
+2 \\ 3
+\end{bmatrix}$
+\\~\\
+
+\begin{enumerate}
+\setcounter{enumi}{0}
+\item Rotate by $45^{\circ}$
+\end{enumerate}
+
+\only<1>{\vspace{30pt}}
+
+\only<2>{
+\vspace{-10pt}
+\[
+\begin{bmatrix}
+    \cos{45^{\circ}}  &  -\sin{45^{\circ}}      \\
+    \sin{45^{\circ}}  &  \cos{45^{\circ}}    
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    \frac{\sqrt{2}}{2}  &  -\frac{\sqrt{2}}{2}      \\
+    \frac{\sqrt{2}}{2}  &  \frac{\sqrt{2}}{2}      
+\end{bmatrix} 
+\begin{bmatrix}
+    2 \\ 3
+\end{bmatrix} 
+=
+\begin{bmatrix}
+ - \frac{\sqrt{2}}{2} \\
+ 	\frac{5\sqrt{2}}{2}
+\end{bmatrix}
+\]
+
+}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item Reflect across $y = x$
+\end{enumerate}
+
+\only<2>{
+\vspace{-10pt}
+\[
+\begin{bmatrix}
+    0 & 1 \\ 1 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+    2 \\ 3
+\end{bmatrix} 
+=
+\begin{bmatrix}
+ 3\\2
+\end{bmatrix}
+\]
+}
+\end{frame}
+
+
+
 
 
 \end{document}
