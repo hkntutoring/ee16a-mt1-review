@@ -10,6 +10,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{spalign}
 \usetikzlibrary{automata, arrows}
 
 % https://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
@@ -284,7 +285,128 @@ $\vec{v}= \begin{bmatrix}
 \end{frame}
 
 
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Determinants}
+Determinant of a $2 x 2$ matrix: \\
+\[ 
+det \, (
+\begin{bmatrix} a & b \\ c & d \end{bmatrix}
+)
+= ad - bc
+\]
 
+Also, an upper triangular matrix’s determinant is the product of the diagonal: \\
+\[ 
+det \, (
+\begin{bmatrix} 
+a & * & * & \cdots \\
+0 & b & * & \cdots \\
+0 & 0 & c & \cdots \\
+\vdots & \vdots & \vdots & \ddots \\
+ \end{bmatrix}
+)
+= abc \cdots
+\]
+\end{frame}
+
+
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Gaussian Elimination}
+\textbf{Ultimate goal: } Upper triangular form (\textbf{i.e} numbers below the diagonal are all 0) \\~\\
+\textbf{Reminder of Motivation:} Can work starting from the bottom row up in order to quickly calculate (from a computer’s perspective) each variable’s value. \\
+For example, the last row has one variable and one value. 
+\end{frame}
+
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Gaussian Elimination}
+\textbf{IDEA: } Augmented matrix represents a system of equations where each row is an equation. \\
+What are you allowed to do with equations to solve them?
+
+\begin{enumerate}
+\item \textbf{Row exchange} (same equations,  different order)
+\item \textbf{Scaling} (multiplying an equation by  a scalar)
+\item \textbf{Replace a row with the a linear combination of itself and another row} (intuitively, must include itself because otherwise there is “loss of information”, like a deletion of one of the original rows)
+\end{enumerate}
+
+\textbf{GOAL:} \\ Original Matrix $\rightarrow$ Row Echelon Form $\rightarrow $ Reduced Row Echelon Form
+\end{frame}
+
+
+\begin{frame}[t]\vspace{-10pt}
+\frametitle{Gaussian Elimination Example}
+\only<1>{\makeheader{Problem}}
+\only<2>{\makeheader{\textcolor{red}{Solution}}}
+Use Gaussian Elimination to reduce the following system of equations:\\~\\
+
+% https://tex.stackexchange.com/questions/35174/best-way-to-create-an-system-of-equations-environment
+\only<1> {
+\[
+  \spalignsys{
+    x_1 +  x_2 + x_3 = 8;
+    2x_1 - 4x_2 +  3x_3 =  9 ;
+    -x_1 + 5x_2 - 2x_3 = 0
+  }
+\]
+}
+\only<2>{
+$
+  \begin{bmatrix}[ccc|c]
+  1 & 1 & 1 & 8\\
+  2 & -4 & 3 & 9\\
+  -1 & 5 & -2 & 0
+  \end{bmatrix}
+  \xrightarrow[]{2R_1 - R_2 \rightarrow R_2 }
+  \begin{bmatrix}[ccc|c]
+  1 & 1 & 1 & 8\\
+  0 & 6 & -1 & 7\\
+  -1 & 5 & -2 & 0
+  \end{bmatrix}
+  \xrightarrow[]{R_1 + R_3 \rightarrow R_3 }
+$
+
+\vspace{10pt}
+
+$
+  \begin{bmatrix}[ccc|c]
+   1 & 1 & 1 & 8\\
+   0 & 6 & -1 & 7\\
+   0 & 6 & -1 & 8
+  \end{bmatrix}
+  \xrightarrow[]{R_2 - R_3 \rightarrow R_3  }
+  \begin{bmatrix}[ccc|c]
+  1 & 1 & 1 & 8\\
+   0 & 6 & -1 & 7\\
+  0 & 0 & 0 & -1
+  \end{bmatrix} 
+$
+
+The last row implies 0 of three variables add up to -1. Therefore, there exists no solution.
+}
+\end{frame}
+
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Possible Outcomes from Gaussian Elimination}
+
+\hspace*{-2pt}\makebox[\linewidth][c]{
+\begin{tiny}
+\begin{tabular}{p{2.5cm} | p{2.5cm} | p{2.5cm} | p{2.5cm}}
+
+\textbf{Possible Results} & Row Picture & Column Picture & Properties of Matrix A\\
+\hline \hline
+\textbf{Unique solution} & Equations intersect at exactly one point & \textbf{b} can be uniquely represented by the linear combination of the columns of  \textbf{A} &  \textbf{A} is invertible \\
+\hline
+\textbf{Infinite solutions} & Equations intersect along an infinite space (eg. the intersection is a line or a plane) & There are multiple ways of representing \textbf{b} in terms of the linear combination of the columns of \textbf{A} & \textbf{A} has linearly dependent columns \\
+\hline
+\textbf{No solutions} & Equations do not intersect & \textbf{b} is not in the span of the columns of \textbf{A}; \textbf{b} is not in the column space of \textbf{A} & Column space of \textbf{A} does not contain (span) the vector \textbf{b}
+\end{tabular}
+\end{tiny}
+}
+
+
+\end{frame}
 
 
 \end{document}
