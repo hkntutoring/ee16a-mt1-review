@@ -408,5 +408,108 @@ The last row implies 0 of three variables add up to -1. Therefore, there exists 
 
 \end{frame}
 
+\section*{Linear (In)dependence \& Invertibility}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Linear Combination}
+Core: Addition and Scaling \\
+In context of vectors $v_1, v_2, \ldots, v_n$:\\
+\[a_1 v_1 + a_2 v_2 + \cdots + a_n v_n\] \\
+where $a_1, a_2, \ldots, a_n$ are scalars
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Taking a Step Back}
+Hopefully by now you have been able to recognize that the core of all linear algebra is linear combinations. \\
+Think back to how one of the rules of row operations allows to a linear combination of rows as long as the original row being replaced is included!
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Column Space}
+Let $v_1, v_2, \dots, v_n$ be the columns of matrix $V$. The linear combination of the vectors is the \textbf{Column Space} of $V$. \\
+This is also known as the \textbf{Range} of $V$, because when a matrix multiplies a vector or another matrix (which is just multiple vectors!), the result is a linear combination of all the columns. Hence, the linear combination of the columns is like the reach, or \textbf{Range} of the matrix.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Linear Dependence: Two Definitions}
+\begin{enumerate}[(i)]
+\item A set of vectors $\{ v_1, \ldots, v_n \}$ is linearly dependent if there exist scalars $a_1, \ldots, a_n$ such that $a_1 v_1 + a_2 v_2 + \cdots + a_n v_n = 0$ and not all $a_i$'s are $0$.
+\item A set of vectors is linearly dependent if one of the vectors could be written as a linear combination of the rest of the vectors. $v_i = \sum_{j \neq i} a_j v_j$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Linear Independence}
+Strictly speaking, a matrix is linearly independent if it is \textbf{not} linearly dependent.\\
+In other words, for a set of linearly independent vectors, $a_1 v_1 + a_2 v_2 + \cdots + a_n v_n = 0$ implies that all $a_1 = 0, a_2 = 0, \cdots , a_n = 0$ (useful when doing proofs).
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Linear (In)dependence}
+Conceptually, if you have $2$ equations and $3$ unknowns, you cannot solve it. Imagine if you have $3$ equations but one equation was actually a linear combination of the first two. You still have the same ``information'' of $2$ equations as your ``basis''. Many important implications.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Span}
+The \textbf{span} of a set of vectors $\{v_1, \ldots, v_n\}$ is the set of all linear combinations of $\{v_1, \ldots, v_n\}$.\\
+In other words, if one vectors $v_i$ in a set of $n$ vectors lied in the span of the other vectors, then that set is considered linearly dependent.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Rank}
+The \textbf{rank} of a matrix $A$ is the dimension of the column space of $A$. \\
+This is the same as the number of linearly independent column vectors. \\
+This is also the same as the number of linearly independent row vectors.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Relating it Back To Linear (In)dependence}
+Colloquially, a matrix $A$ can be said to \textbf{span} $n$ dimensions. \\
+This means that matrix $A$ has $n$ linearly independent rows and $n$ linearly independent columns. \\
+This also means that matrix $A$ is of \textbf{rank} $n$.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{Span \& Rank \& (In)dependence}
+To figure out the \textbf{span} of a set of vectors, think of them as the column vectors of a matrix and Gaussian eliminate that matrix to RREF. \\
+The number of non-zero rows is the \textbf{dimension} the vectors span. \\
+If those vectors were actually the columns of a matrix, the dimension is also the \textbf{rank} of that matrix. \\
+If the dimension is the same as the total number of vectors, then those vectors are \textbf{independent}.
+\end{frame}
+
+\begin{frame}[t]\vspace{10pt}
+\frametitle{\only<2>{SOL: }Example of figuring out Span \& Rank}
+\[
+\begin{bmatrix}
+1 & 2 & 1 & -4\\
+0 & -1 & 1 & -2\\
+1 & 4 & 1 & 2\\
+\end{bmatrix}
+\uncover<2>{
+\xrightarrow{R_3 - R_1 \rightarrow R_3}
+\begin{bmatrix}
+1 & 2 & 1 & -4\\
+0 & -1 & 1 & -2\\
+0 & 2 & 0 & 6\\
+\end{bmatrix}
+\]
+\[
+\xrightarrow{R_2 \leftrightarrow \frac{1}{2} R_3}
+\begin{bmatrix}
+1 & 2 & 1 & -4\\
+0 & 1 & 0 & 3\\
+0 & -1 & 1 & -2\\
+\end{bmatrix}
+\xrightarrow{R_2 + R_3 \rightarrow R_3}
+\begin{bmatrix}
+1 & 2 & 1 & -4\\
+0 & 1 & 0 & 3\\
+0 & 0 & 1 & 1\\
+\end{bmatrix}
+\]
+\begin{center}
+There are 3 linearly independent rows!
+\end{center}}
+\end{frame}
 
 \end{document}
