@@ -596,4 +596,129 @@ d & -b\\
 
 \section*{Nullspace/Vector Space/Basis/Subspace}
 
+\begin{frame}
+    \frametitle{Vector Spaces}
+    \textbf{A set of elements closed under vector addition and scalar multiplication} \\
+    Properties of a vector space $V$: \\
+    \begin{enumerate}
+        \item If $u$ and $v$ are vectors in $V$, then $u+v$ must be in $V$ \\
+        \item If $u$ is a vector in $V$ and $k$ is a real number, then $ku$ must be in $V$ \\
+    \end{enumerate}
+    * Any linear combination of vectors in $V$ is still in $V$ (the span of a vector space is itself).
+\end{frame}
+
+\begin{frame}
+\includegraphics[width=\textwidth]{./images/vector_space_properties.png}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Practice: Vector Space or Not?}
+    \begin{itemize}
+        \item $2$D plane, (two vectors spanning $\mathbb{R}^2$) \only<2>{\textcolor{red}{(Yes)}}
+        \item $5$D space, (five vectors spanning $\mathbb{R}^5$) \only<2>{\textcolor{red}{(Yes)}}
+        \item $n$-D space, ($n$ vectors spanning $\mathbb{R}^n$) \only<2>{\textcolor{red}{(Yes)}}
+        \item Line in $\mathbb{R}^2$ \only<2>{\textcolor{red}{(It depends)}}
+        \begin{itemize}
+            \item Intersecting origin \only<2>{\textcolor{red}{(Yes)}}
+            \item Not intersecting origin \only<2>{\textcolor{red}{(No)}}
+        \end{itemize}
+    \item First and third quadrant of $\mathbb{R}^2$ \only<2>{\textcolor{red}{(No)}}
+    \item Plane in $\mathbb{R}^3$ intersecting origin \only<2>{\textcolor{red}{(Yes)}}
+    \item $\{ 0 \}$ (Just the zero vector) \only<2>{\textcolor{red}{(Yes)}}
+    \item $\{ v \in \mathbb{R}^n \mid v \neq 0 \}$ \only<2>{\textcolor{red}{(No)}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Subspaces}
+    \textbf{A subspace is a subset of a vector space that is itself a vector space} \\
+    Suppose we have a vector space $V$. A subset $S$ of $V$ is only a subspace if the following three properties are met: \\
+    \begin{enumerate}
+        \item The zero vector of $V$ is in $S$
+        \item $S$ is closed under vector addition. $u + v \in S$
+        \item $S$ is closed under multiplication by scalars. $cu \in S$
+    \end{enumerate}
+    (Same rules as before!)
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bases}
+    A \textbf{basis} of a vector space is a \textbf{linearly independent} set of vectors that \textbf{span} the vector space.
+    \begin{enumerate}
+        \item All vectors in the set are \textbf{linearly independent}
+        \item All vectors in the vector space can be represented as a linear combination of the basis vectors (\textbf{span}).
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bases}
+    A basis does not necessarily have to span $\mathbb{R}^n$ - it can span any vector space.
+    \begin{itemize}
+        \item A basis is a \textbf{minimum set of vectors} required to completely span a vector space.
+        \begin{itemize}
+            \item e.g. Any basis of $\mathbb{R}^n$ contains \textbf{exactly} $n$ vectors. In fact, an $m$-dimensional vector space must have $m$ vectors in its basis.
+        \end{itemize}
+        \item Bases are NOT unique! Why? How many are there?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nullspace}
+    The null space of a matrix (transformation) is the set of all solutions to the homogeneous equation $Ax=0$. It is a subspace of $\mathbb{R}^n$. \\
+    Finding a null space:
+    \begin{enumerate}
+        \item Reduce to reduced row-echelon form, identify free variables
+        \item Write out system of equations, represent solutions in matrix form
+        \item Write out linear combination of vectors with free variables as coefficients
+        \item The vectors are the basis of the null space
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[t]\vspace{0pt}
+    \frametitle{Example of Solving Nullspace}
+    \[
+    \begin{bmatrix}
+    -3 & 6 & -1 & 1 & -7\\
+    1 & -2 & 2 & 3 & -1\\
+    2 & -4 & 5 & 8 & 2\\
+    \end{bmatrix}
+    \xrightarrow{\text{Row Reduce}}
+    \begin{bmatrix}
+    1 & -2 & 0 & -1 & 0\\
+    0 & 0 & 1 & 2 & 0\\
+    0 & 0 & 0 & 0 & 1\\
+    \end{bmatrix}
+    \]
+    Goal is finding all $x$ where $Ax=0$ \\
+    \only<1>{
+    A matrix will have the \textbf{same nullspace} as its row reduced form. \\
+    This is because row reducing is the same as manipulating equations; the solution for the row reduced form is the same as the solution for the original matrix.
+    }
+    \only<2>{
+    \begin{small}
+    \begin{minipage}{.5\linewidth}
+        Let $x = \begin{bmatrix} x_1 & x_2 & x_3 & x_4 & x_5 \end{bmatrix}^T$ \\
+        Rewrite in system of equations: \\
+        $x_1 - 2x_2 - x_4 = 0 \implies x_1 = 2x_2 + x_4$ \\
+        $x_3 + 2x_4 = 0 \implies x_3 = -2x_4$ \\
+        $x_5 = 0$
+    \end{minipage}%
+    \begin{minipage}{.52\linewidth}
+        Let $u=x_2$, $v=x_4$. Then: \\
+        $\begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ x_5 \end{bmatrix}
+        = \begin{bmatrix} 2u + v \\ u \\ -2v \\ v \\ 0 \end{bmatrix}
+        = \begin{bmatrix} 2 \\ 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} u
+        + \begin{bmatrix} 1 \\ 0 \\ -2 \\ 1 \\ 0 \end{bmatrix} v$
+    \end{minipage}
+    So the null space is the span of $\begin{bmatrix} 2 & 1 & 0 & 0 & 0 \end{bmatrix}^T$ and $\begin{bmatrix} 1 & 0 & -2 & 1 & 0 \end{bmatrix}^T$ because multiplying $A$ by any linear combination of those two vectors equals $0$.
+    \end{small}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Addition to Invertibility}
+    If a matrix has a nontrivial nullspace (does not only contain the $0$ vector), then it is not invertible. (Same as saying a matrix is invertible iff its nullspace is trivial i.e. only contains the $0$ vector.) \\
+    Intuitive explanation: If $Av=0$ where $v \neq 0$, then the nullspace at least contains the span of $v$. There are then infinite solutions to $Au=0$. So $A^{-1}$ does not exist.
+\end{frame}
+
 \end{document}
